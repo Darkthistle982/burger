@@ -19,6 +19,12 @@ var connection = mysql.createConnection({
   database: "burgers_db"
 });
 
-app.listen(PORT, function() {
-console.log('listening on port ' + PORT)
+app.listen(PORT, function(error) {
+    if (error) {
+        console.error("Error Connecting: " + error.stack);
+        return;
+    }
+    console.log('listening on port ' + PORT)
 });
+
+module.exports = connection;
