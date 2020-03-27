@@ -3,15 +3,16 @@ const exphbs = require("express-handlebars");
 const mysql = require("mysql");
 
 const app = express();
-var PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
+app.use(express.static("public"));
 
 app.engine("handlebars", exphbs({ defaultLayout: "main" }));
 app.set("view engine", "handlebars");
 
-var connection = mysql.createConnection({
+let connection = mysql.createConnection({
   host: "localhost",
   port: 3306,
   user: "root",
