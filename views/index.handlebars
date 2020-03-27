@@ -2,10 +2,10 @@
     <div class="row">
         <div class="center col-sm-12">
             {{!-- Insert a top burger image here --}}
-            <img src="" alt="Eat-A-Burger App">
+            <img src="https://i.imgur.com/izk0psF.jpg?1" alt="Eat-A-Burger App" 
+            style="width: 250px; height: 175px; align-content: center;">
 
-            <h1>Eat-A-Burger</h1>
-            <p></p>
+            <h1 class="font-weight-bolder">Eat-A-Burger</h1>
         </div>
     </div>
 
@@ -30,6 +30,7 @@
         </div>
 
         <div class="col-sm-6">
+            <br>
             <h2>Burgers That Have Been Eaten</h2>
             {{#each burgers}}
             {{#if this.devoured}}
@@ -47,10 +48,10 @@
             <h2>Add a Burger</h2>
             <form class="create-update-form" action="/" method="POST">
                 <div class="form-group">
-                    <p>Enter a burger you want to order and click the Submit Order button.</p>
+                    <p>Enter a burger you want to eat and click the 'Yum!' button.</p>
                     <input type="text" id="burgerInput" name="burger_name">
                 </div>
-                <button class="btn-primary" type="submit">Submit Order</button>
+                <button class="btn-primary" type="submit">Yum!</button>
             </form>
         </div>
     </div>
