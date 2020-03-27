@@ -9,18 +9,18 @@ function printQuestionMarks(number) {
 }
 
 function objToSql(ob) {
-    var arr = [];  
-    for (var key in ob) {
-      var value = ob[key];
-      if (Object.hasOwnProperty.call(ob, key)) {
-        if (typeof value === "string" && value.indexOf(" ") >= 0) {
-          value = "'" + value + "'";
-        }
-        arr.push(key + "=" + value);
+  var arr = [];
+  for (var key in ob) {
+    var value = ob[key];
+    if (Object.hasOwnProperty.call(ob, key)) {
+      if (typeof value === "string" && value.indexOf(" ") >= 0) {
+        value = "'" + value + "'";
       }
+      arr.push(key + "=" + value);
     }
-    return arr.toString();
-  };
+  }
+  return arr.toString();
+}
 
 orm = {
   selectAll: function(tableInput, callback) {
@@ -43,7 +43,17 @@ orm = {
       callback(result);
     });
   },
-  updateOne: function() {}
+  updateOne: function(table, objectColumnValues, condition, callback) {
+    let queryString = `UPDATE ${table} SET ${objToSql(
+      objectColumnValues
+    )} WHERE ${condition}`;
+    connection.query(queryString, function(error, result) {
+      if (error) {
+        throw error;
+      }
+      callback(result);
+    });
+  }
 };
 
 module.exports = orm;
