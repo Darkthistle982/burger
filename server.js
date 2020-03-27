@@ -1,7 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const methodOverride = require('method-override');
-const PORT = 8080;
+const PORT = process.env.PORT || 8080;
 const app = express();
 
 app.use(express.static(process.cwd() + "/public"));
