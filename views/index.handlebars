@@ -1,9 +1,9 @@
-<div class="container bg">
+<div class="container bg-secondary">
     <div class="row">
         <div class="center col-sm-12">
             {{!-- Insert a top burger image here --}}
             <img src="https://i.imgur.com/izk0psF.jpg?1" alt="Eat-A-Burger App" 
-            style="width: 250px; height: 175px; align-content: center;">
+            class="mt-1 img-fluid img-thumbnail mx-auto" style="width: 300px;">
 
             <h1 class="font-weight-bolder">Eat-A-Burger</h1>
         </div>
@@ -12,16 +12,17 @@
     <div class="row">
         <div class="col-sm-6">
             <br>
-            <h2>Burgers Available to Eat!</h2>
+            <h2 class="font-weight-bold">Burgers Available to Eat!</h2>
             <ul>
                 {{#each burgers}}
                 {{#unless this.devoured}}
-                <li>
+                <li class="bg-light border border-dark rounded m1-1 mb-1">
                     {{this.id}}
                     {{this.burger_name}}
                     <form action="/{{this.id}}?_method=PUT" method="POST">
                         <input type="hidden" name="devoured" value="true">
-                        <button class="btn-primary" type="submit">Devour It!</button>
+                        <button class="btn-dark text-align-center border border-dark rounded-pill ml-3 mb-1" 
+                            type="submit">Devour It!</button>
                     </form>
                 </li>
                 {{/unless}}
@@ -31,10 +32,10 @@
 
         <div class="col-sm-6">
             <br>
-            <h2>Burgers That Have Been Eaten</h2>
+            <h2 class="font-weight-bold">Burgers That Have Been Eaten</h2>
             {{#each burgers}}
             {{#if this.devoured}}
-            <li>
+            <li class="bg-light rounded-pill border border-dark mt-1 mb-1">
                 {{this.id}}
                 {{this.burger_name}}
             </li>
@@ -45,13 +46,13 @@
 
     <div class="row">
         <div class="center col-sm-12">
-            <h2>Add a Burger</h2>
+            <h2 class="font-weight-bold">Add a Burger</h2>
             <form class="create-update-form" action="/" method="POST">
                 <div class="form-group">
                     <p>Enter a burger you want to eat and click the 'Yum!' button.</p>
                     <input type="text" id="burgerInput" name="burger_name">
                 </div>
-                <button class="btn-primary" type="submit">Yum!</button>
+                <button class="btn btn-lg btn-dark mb-2" type="submit">Yum!</button>
             </form>
         </div>
     </div>
